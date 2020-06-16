@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格</title>
+    <style>
+        td{width: 100px;height: 100px;background-color: red; border-radius: 9px;border:3px;}
+        .bar{width: 309px;height: 30px;background-color: yellow; margin-top: 9px;border-radius: 9px;text-align: center;}
+    </style>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> 
+    </table>
+    <button class="bar" onclick="start()">start</button><br>
+    <button class="bar" onclick="stop()">stop</button>
+<script>
+    var i= document.getElementsByTagName("td");
+    let time1;
+    let k=[];
+    function random(len, start, end) {
+    　　var arr = [];
+    　　function creat(start, end) {
+    　　　　var numlen= end - start;
+    　　　　return parseInt(Math.random() * numlen+ start)
+    　　}
+    　　while (arr.length < len) {
+    　　　　var num = creat(start, end);
+    　　　　　　if (arr.indexOf(num) == -1) {
+    　　　　　　　　arr.push(num);
+    　　　　　　}
+    　　}
+    　　　　return arr;
+    }
+
+    function color16(){
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+			return color;
+    }
+    function bgchange(){
+        setTimeout("recover()",500)；
+        k=random(3,0,8)；
+        for(j=0;j<k.length;j++){
+            i[k[j]].style.backgroundColor=color16();
+        }
+    }
+    function recover(){
+        for(j=0;j<k.length;j++){
+            i[k[j]].style.backgroundColor='red'；
+        }
+
+    }
+    function start(){
+     time1 = setInterval("bgchange()",1000);
+    }
+    function stop(){
+        clearInterval(time1);
+        for(j=0;j<k.length;j++){
+            i[k[j]].style.backgroundColor='red'；
+        }
+
+    }
+    
+</script>
+</body>
+</html>
