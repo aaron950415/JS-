@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+                body{background-color: #f0f0f0;}
+        .content{background-color: #ffffff;width: 607px;margin-left: auto;margin-right: auto;border: solid 1px  #cecece;}
+    </style>
+</head>
+<body>
+    <div class="whole">
+        <div class="title"> 
+            <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+              <h3 style="font-size: 40px;padding-left: 37%;color: white;display: block;padding-top: 60px;">参数设置</h3>
+            <img src="./source/狼人杀.png" class="r" style="margin-right: 23px;margin-top:-20px;" alt="" >
+        </div>
+        <div class="content" style="height: 452px;margin-top: 20px;display: grid;  grid-template-columns:122px auto auto; grid-template-rows: 300px 94px 62px;">
+            <div style="grid-row: 1 /4; grid-column:1; border-right: solid grey 1px;font-size: 34px ;letter-spacing: 100px; text-align: center;padding-left: 40px;padding-top: 120px;font-weight: bold;">玩家配比</div>
+            <div style="grid-row: 1 / 3 ; grid-column:2 /4;border-bottom: solid grey 1px;">
+            <table style="padding-left:150px;">
+                <tr>
+                    <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 100px;">
+                       狼人 
+                    </td>
+                       <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 100px;">
+                       <input type="text" value="2" disabled="disabled" style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                       预言家
+                    </td>
+                    <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                         <input type="text" value="1" disabled="disabled" style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                       村民
+                    </td>
+                    <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                         <input type="text" value="3" disabled="disabled" style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div style=" grid-column:2 / 4;color: blue;font-size: 26px;text-align: center;padding-top: 10px;" onclick="role1()">点击设置</div>
+        
+        </div>
+        <div class="content" style="height: 200px;margin-top: 8px;">ignore</div>
+        <div class="content" style="height: 190px;margin-top: 8px;">
+            <table style="margin-left: 32px;">
+                <tr>
+                    <td style="font-size: 28px; margin-left: 32px;height: 76px; line-height: 76px;">玩家人数<input style="width: 62px; height: 42px;font-size: 28px; text-align: center;background-color: grey;border: none;" type="text" value="6" onchange="people1()">人</td>
+                </tr>
+                <tr>
+                    <td >
+                        <button onclick="down()" style="font-size: 28px; width: 37px;color :#fab344;background-color: white;border: grey solid 1px;">
+                            -
+                        </button>
+                   
+                        <input style="width: 420px; height: 37px;position: relative;top: 10px; margin-left: 10px;margin-right: 10px;" type="range" max="16" min="6" step="1" value="6" oninput="people()" >
+                  
+                        <button onclick="up()" style="font-size: 28px; width: 37px;color :#fab344;background-color: white;border: grey solid 1px;">
+                            +
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="entry"  class="content" style="height: 90px; background-color: #fab344;margin-top: 20px;" onclick="entry()">
+        <h3 style="font-size: 40px;text-align: center;line-height: 90px;color: white;" >去发牌</h3>
+        </div>
+    </div>
+    <div id="choose" style="position: absolute;left: 70px; top: 280px; width: 500px;height: 500px;background-color: white;display: none;border: solid 4px #29bde0;">
+        <table style="padding-left:150px;">
+            <tr>
+                <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 100px;">
+                   狼人 
+                </td>
+                   <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 100px;">
+                   <input type="text" value="2"  style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                   预言家
+                </td>
+                <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                     <input type="text" value="1"  style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                   村民
+                </td>
+                <td style="font-size: 26px;color: grey;text-align-last: justify;padding-top: 50px;">
+                     <input type="text" value="3" style="text-align-last: center; font-size: 26px;line-height: 26px;width: 52px;border: none;background-color: grey;">人
+                </td>
+            </tr>
+        </table>
+        <input type="button" class="l" style="font-size: 34px;width: 80px;height: 50px;margin-left: 150px; margin-top: 30px; margin-bottom: 20px;background-color: #29bde0;border-radius: 10px; border: solid 2px #29bde0;" value="确定" onclick="confirm()">
+        <input type="button" class="l" style="font-size: 34px;margin-left: 30px;width: 80px;height: 50px;margin-top: 30px; margin-bottom: 20px;background-color: #29bde0;border-radius: 10px; border: solid 2px #29bde0;" value="取消" onclick="cancel()">
+    </div>
+    <script>
+            function people(){
+                let number=document.getElementsByTagName("input")[4].value  ;
+                document.getElementsByTagName("input")[3].value=number
+                role();
+            }
+            let t=document.getElementsByTagName("input")[3].value;
+            let r=/\D/;
+            function people1(){
+                let number1=document.getElementsByTagName("input")[3].value;
+                
+                if(number1.match(r) != null ){
+                    alert("请输入正确的数");
+                    document.getElementsByTagName("input")[3].value=t;
+                    }else{
+                if(number1 > 16){
+                    alert("超过最大人数");
+                    document.getElementsByTagName("input")[3].value=t;
+                }else if(number1 < 6){
+                    alert("小于最少人数");
+                    document.getElementsByTagName("input")[3].value=t;
+                }else{
+                    t=number1;
+                document.getElementsByTagName("input")[4].value=number1;
+                }
+                }
+                
+            }
+            let wolf=document.getElementsByTagName("input")[0].value;
+            let predictor=document.getElementsByTagName("input")[1].value;
+            let human=document.getElementsByTagName("input")[2].value;
+
+            function role(){
+                let num=document.getElementsByTagName("input")[4].value;
+                if(num%2 == 0){
+                    wolf = num/2;
+                    predictor = 1;
+                    human = num/2-1;
+                }else{
+                    wolf=Math.ceil(num/2);
+                    predictor = 1;
+                    human=Math.floor(num/2)-1;
+                }
+                document.getElementsByTagName("input")[0].value = wolf;
+                document.getElementsByTagName("input")[1].value = predictor;
+                document.getElementsByTagName("input")[2].value = human;
+            }
+
+            function role1(){
+                document.getElementsByTagName("input")[5].value = wolf;
+                document.getElementsByTagName("input")[6].value = predictor;
+                document.getElementsByTagName("input")[7].value = human;
+                document.getElementById("choose").style.display="";
+            }
+
+            let    wolf2=document.getElementsByTagName("input")[5].value;
+            let    predictor2=document.getElementsByTagName("input")[6].value;
+            let    human2=document.getElementsByTagName("input")[7].value;
+            function confirm(){
+                wolf1=document.getElementsByTagName("input")[5].value;
+                predictor1=document.getElementsByTagName("input")[6].value;
+                human1=document.getElementsByTagName("input")[7].value;
+                if(wolf1.match(r) != null || predictor1.match(r) != null || human1.match(r) != null){
+                    alert("请输入正确的数");
+                document.getElementsByTagName("input")[5].value = wolf2;
+                document.getElementsByTagName("input")[6].value = predictor2;
+                document.getElementsByTagName("input")[7].value = human2;
+                    }else{
+                let number2 =  parseInt (wolf1)+parseInt(predictor1)+parseInt(human1)
+                
+                if(number2 > 16){
+                    alert("超过最大人数");
+                    document.getElementsByTagName("input")[5].value = wolf2;
+                document.getElementsByTagName("input")[6].value = predictor2;
+                document.getElementsByTagName("input")[7].value = human2;
+                }else if(number2 < 6){
+                    alert("小于最少人数");
+                document.getElementsByTagName("input")[5].value = wolf2;
+                document.getElementsByTagName("input")[6].value = predictor2;
+                document.getElementsByTagName("input")[7].value = human2;
+                }else{
+                wolf2=document.getElementsByTagName("input")[5].value;
+                predictor2=document.getElementsByTagName("input")[6].value;
+                human2=document.getElementsByTagName("input")[7].value;
+                document.getElementsByTagName("input")[0].value = wolf1;
+                document.getElementsByTagName("input")[1].value = predictor1;
+                document.getElementsByTagName("input")[2].value = human1;
+                wolf=document.getElementsByTagName("input")[0].value;
+                predictor=document.getElementsByTagName("input")[1].value;
+                human=document.getElementsByTagName("input")[2].value;
+                document.getElementsByTagName("input")[3].value =number2;
+                document.getElementsByTagName("input")[4].value = number2;
+                document.getElementById("choose").style.display="none";
+
+                }
+                    }
+
+            }
+            function cancel(){
+                document.getElementById("choose").style.display="none";
+            }
+
+            function up(){
+                if(document.getElementsByTagName("input")[4].value < 16){
+                    document.getElementsByTagName("input")[4].value++;
+                    people();
+                }
+            }
+            function down(){
+                if(document.getElementsByTagName("input")[4].value > 6){
+                    document.getElementsByTagName("input")[4].value--;
+                    people();
+                }
+            }
+
+            function next(arr,num,name){
+                 arr.length=num;
+                 for(var i=0;i<arr.length;i++)
+                arr[i]=name;
+            }
+            function entry(){
+                var wolfarr=new Array;
+                var predictorarr=new Array;
+                var humanarr=new Array;
+                next(wolfarr,wolf,"wolf")
+                next(predictorarr,predictor,"predictor")
+                next(humanarr,human,"human")
+                let player=wolfarr.concat(predictorarr,humanarr);
+                player.sort(function(a, b){return 0.5 - Math.random()});
+
+                console.log(player)
+            }
+    </script>
+</body>
+</html>
