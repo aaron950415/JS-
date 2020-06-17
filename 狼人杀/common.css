@@ -1,0 +1,11 @@
+*{margin: 0; padding: 0;}
+ul,ol{list-style: none;}
+img{display: block;}
+a{text-decoration: none;color: grey;}
+.c{font-size: 34px;}
+
+
+.l {float: left;}
+.r {float: right;}
+.whole {width: 640px;height: 1136px;}
+.title{widows: 100%; height: 128px;background-color: #29bde0;}
