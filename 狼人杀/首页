@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+        body{background-color: #f0f0f0;}
+        .content{background-color: #ffffff;width: 570px;margin-left: auto;margin-right: auto;border: solid 1px  #cecece;}
+        .content1{height: 118px;}
+        .content2{height: 777px;}
+        #page1{display: none;}
+    </style>
+
+</head>
+<body>
+    <div class="whole" >
+        <div class="title">
+
+            <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+        </div>
+        <div id="page1">
+            <div class="content content1">
+                <h3 class="c" style="color:  #9a9a9a; text-align: center;line-height: 120px;">
+                    上次游戏: 捉鬼猜词版</h3>
+                    <img class="r" style="position: relative;bottom:  80px;right: 16px;" src="./source/首页.png" alt="">
+                
+            </div>
+            <div class="content content2">
+                <div style="height: 90px;border-bottom:solid 2px #fde1ae">
+                    <h3 class="c" style="color:  #fbb435; text-align: center;line-height: 90px;">捉鬼游戏</h3>
+                    <table style="margin-top:31px;margin-left: auto;margin-right: auto;">
+                        <tr>
+                            <td class="c" style="width:464px;height:134px;background-color:#29bde0;text-align: center;line-height: 135px;color: white;">简化版</td>
+                        </tr>
+                        <tr>
+                            <td style="width:464px;height:84px;color:grey;line-height: 84px;text-align: center;font-size: 24px;">有1133个人正在玩这个游戏</td>
+                        </tr>
+                        <tr>
+                            <td class="c" style="width:464px;height:134px;background-color:#29bde0;text-align: center;line-height: 135px;color: white;">猜词版</td>
+                        </tr>
+                        <tr>
+                            <td style="width:464px;height:84px;color:grey;line-height: 84px;text-align: center;font-size: 24px;">有1133个人正在玩这个游戏</td>
+                        </tr>
+                        <tr>
+                            <td class="c" style="width:464px;height:134px;background-color:#29bde0;text-align: center;line-height: 135px;color: white;">白痴版</td>
+                        </tr>
+                        <tr>
+                            <td style="width:464px;height:48px;color:grey;line-height: 28px;text-align: center;font-size: 24px;">有1133个人正在玩这个游戏</td>
+                        </tr>
+                        <tr>
+                            <td style="width:464px;height:0px;color:grey;line-height: 0px;text-align: center;font-size: 24px; ">                    
+                                <ul style=" position: relative;left: 180px;">
+                                    <li class="l" style="border: solid 9px #29bde2;border-radius: 50%; ">
+            
+                                    </li>
+                                    <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+            
+                                    </li>
+                                    <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+            
+                                    </li>
+                                    <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+            
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            <div style=" border-left: solid 28px #fbb435;border-right: solid 28px white hidden;border-bottom: solid 28px white;border-top: solid 28px white;margin-top: 288px;margin-right: 14px;" class="r" onclick="right()"></div>
+            </div>
+
+        </div>
+        <div id="page2">
+            <div class="content content1">
+                <h3 class="c" style="color:  #9a9a9a; text-align: center;line-height: 120px;">
+                    上次游戏: 捉鬼猜词版</h3>
+                    <img class="r" style="position: relative;bottom:  80px;right: 16px;" src="./source/首页.png" alt="">
+                
+            </div>
+            <div class="content content2">
+                <div >
+
+
+
+                </div>
+            <div style=" border-right: solid 28px #fbb435;border-left: solid 28px white hidden;border-bottom: solid 28px white;border-top: solid 28px white;margin-top: 378px;margin-left: 14px;" class="l" onclick="left()"></div>
+            
+            <div style=" border-left: solid 28px #fbb435;border-right: solid 28px white hidden;border-bottom: solid 28px white;border-top: solid 28px white;margin-top: 378px;margin-right:-14px;" class="r" onclick="left()"></div>
+            <table >
+                <tr>
+
+                    <td>
+                        <img src="./source/狼人杀tub.png" style="margin-right: auto; margin-left: auto;" alt="" onclick="turn()">
+                    </td>
+                </tr>
+                <tr >
+                    <td style="width:464px;height:160px;color:grey;line-height: 28px;text-align: center;font-size: 24px;">有1133个人正在玩这个游戏</td>
+                </tr>
+                <tr>
+                    <td style="width:464px;height:0px;color:grey;line-height: 0px;text-align: center;font-size: 24px; ">                    
+                        <ul style=" position: relative;left: 180px;">
+                            <li class="l" style="border: solid 9px #29bde2;border-radius: 50%; ">
+    
+                            </li>
+                            <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+    
+                            </li>
+                            <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+    
+                            </li>
+                            <li class="l" style="border: solid 9px grey;border-radius: 50%;margin-left: 16px;">
+    
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        function right(){
+            document.getElementById("page1").style.display="none";
+            document.getElementById("page2").style.display="block";
+        }
+        function left(){
+            document.getElementById("page2").style.display="none";
+            document.getElementById("page1").style.display="block";
+        }
+        function turn(){
+            window.location.href="./设置.html";
+        }
+    </script>
+</body>
+</html>
