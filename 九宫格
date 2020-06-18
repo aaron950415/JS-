@@ -21,15 +21,14 @@
             <td></td>
             <td></td>
             <td></td>
-        </tr>        
-        <tr>
+        </tr>        <tr>
             <td></td>
             <td></td>
             <td></td>
         </tr> 
     </table>
     <button class="bar" onclick="start()">start</button><br>
-    <button class="bar" onclick="stop()">stop</button>
+    <button class="bar"  onclick="stop()">stop</button>
 <script>
     var i= document.getElementsByTagName("td");
     let time1;
@@ -49,35 +48,38 @@
     　　　　return arr;
     }
 
-    function color16(){
-			var r = Math.floor(Math.random()*256);
-			var g = Math.floor(Math.random()*256);
-			var b = Math.floor(Math.random()*256);
-			var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
-			return color;
-    }
+
     function bgchange(){
-        setTimeout("recover()",500)；
-        k=random(3,0,8)；
+        setTimeout("recover()",900);
+        k=random(3,0,9);
         for(j=0;j<k.length;j++){
-            i[k[j]].style.backgroundColor=color16();
+            var rand="#"+ Math.round(Math.random()*1000000);
+            do{
+                rand="#"+ Math.round(Math.random()*1000000);
+            i[k[j]].style.backgroundColor=rand;
+            }
+            while(i[k[j]].style.backgroundColor == "red");
+
+            
+        console.log(k)
         }
     }
     function recover(){
         for(j=0;j<k.length;j++){
-            i[k[j]].style.backgroundColor='red'；
+            i[k[j]].style.backgroundColor='red'
         }
 
     }
     function start(){
      time1 = setInterval("bgchange()",1000);
+     document.getElementsByTagName("button")[0].disabled=true;
     }
     function stop(){
         clearInterval(time1);
         for(j=0;j<k.length;j++){
-            i[k[j]].style.backgroundColor='red'；
+            i[k[j]].style.backgroundColor='red'
         }
-
+        document.getElementsByTagName("button")[0].disabled=false;
     }
     
 </script>
