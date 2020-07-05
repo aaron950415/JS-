@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+   .body{background-color: #f0f0f0;}
+   .sty{float: left; width: 150px;height: 150px;background-color: coral;border: 1px solid black;margin: 30px;text-align: center;line-height: 150px;}
+    </style>
+</head>
+<body class="body">
+    <div class="title"> 
+        <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+          <h3 style="font-size: 40px;padding-left: 37%;color: white;display: block;padding-top: 60px;">查看身份</h3>
+        <img src="./source/狼人杀.png" class="r" style="margin-right: 23px;margin-top:-20px;" alt="" >
+    </div>
+    <div id="show"></div>
+    <div>
+        <input type="button" value="返回" onclick="javascript:history.back();">
+
+
+    </div>
+    <script type="text/javascript">
+   let player=sessionStorage.clickcount.split(",");
+
+    for(var i=0;i<player.length;i++){
+        var oDiv=document.createElement("div");
+        oDiv.className="sty";
+        oDiv.innerHTML=player[i];
+        console.log(typeof(oDiv.innerHTML))
+        if(oDiv.innerHTML.length==0){
+             oDiv.style.backgroundColor="red";
+         }else{
+            oDiv.onclick=function(){
+
+                let u = this
+                d(u);
+            };
+        }
+        var bo = document.getElementById("show");
+		bo.insertBefore(oDiv, bo.lastChild);
+    }
+
+    function d(u){
+        u.style.backgroundColor="grey"
+        u.onclick=function(){
+        c(u);
+        }
+    }   
+    function c(u){
+        u.style.backgroundColor="coral";
+        u.onclick=function(){
+        d(u);
+        }
+    }   
+    console.log(player)
+    </script>
+    </body>
+</html>

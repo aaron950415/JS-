@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+        body{background-color: #f0f0f0;}
+        .day{width: 500px;height: 60px;line-height: 60px;margin:50px auto;background-color: #29bde0; border: black 1px solid; font-size: 40px;color: black;text-align: center;}
+        .text{width: 600px;height: 720px;line-height: 60px;margin:50px auto;background-color: #29bde0; border: black 1px solid; font-size: 40px;color: black;text-align: center;display:none;}
+        .text2{width: 500px;height: 60px;line-height: 60px;font-size: 40px;color: black;text-align: center;margin:30px auto 60px auto;background-color: coral;}
+        .nn{position: absolute;left: 39px;top: 200px;}
+        .change{background-color: grey;}
+         </style>
+</head>
+<body>
+    <div class="title"> 
+        <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+          <h3 style="font-size: 40px;padding-left: 37%;color: white;display: block;padding-top: 60px;">法官台本</h3>
+        <img src="./source/狼人杀.png" class="r" style="margin-right: 23px;margin-top:-20px;" alt="" >
+    </div>
+ 
+    <!-- <div class="day" onclick="start()">第1天</div> -->
+    <div class="text nn">
+        <div class="text2" onclick="page()">预言师验人</div>
+        <div class="text2" onclick="page2()">狼人杀人</div>
+        <div class="text2" onclick="page4()">发表遗言</div>
+        <div class="text2" onclick="page5()">依次发言</div>
+        <div class="text2" onclick="page3()">投票</div>
+        <div class="text2" onclick="next()">发表遗言</div>
+    </div> 
+
+    <script>
+        let player=sessionStorage.clickcount.split(",");
+        var json1 = localStorage.getItem('added-items');
+
+        json2=eval("(" + json1 + ")");
+
+        let ii=2;
+        let set;
+        let step;
+        var json;
+        let u=document.getElementsByTagName("div");
+        let day2=1;
+        let times=0;
+        if(json1!=null){
+            if(json2.num!=null){
+                player=json2.num;
+            }
+                if(json2.step!=null){
+                    document.getElementsByClassName("nn")[0].style.display='block'; 
+                step=json2.step;
+                colorchange();
+            }
+            if(json2.day!=null){
+                day2=json2.day;
+            }
+            if(json2.times!=null){
+                times=json2.times;
+            }
+        }
+        console.log(player);
+        localStorage.removeItem("added-items");
+        function start(){  
+            document.getElementsByClassName("nn")[0].style.display='block';     
+        }
+        function close(){
+            document.getElementsByClassName("nn")[0].style.display='none'
+        }
+        function page(){
+            step=1;
+            times++;
+            dataoutput();
+            colorchange();
+            window.location.href="./预言家验证身份.html";
+           console.log(player[4])
+        }
+        function page4(){
+            if(times<2){
+                alert("请按顺序执行1");
+            }else{
+                step=3;
+            colorchange();
+            times++;
+            }
+        }
+        function page5(){
+            if(times<3){
+                alert("请按顺序执行1");
+            }else{
+                step=4;
+
+            colorchange();
+            times++;
+            }
+        }
+        function page2(){
+            if(times<1){
+                alert("请按顺序执行");
+            }else{
+                step=2;
+            times++;
+            dataoutput();
+            colorchange();
+            window.location.href="./狼人杀人.html";
+            }
+        }
+        function page3(){
+            if(times<4){
+                alert("请按顺序执行2");
+            }else{
+                step=5;
+            times++;
+            dataoutput();
+            colorchange();
+            window.location.href="./投票.html";
+            }
+        }
+        function next(){
+            if(times<5){
+                alert("请按顺序执行3");
+            }else{
+                times=0;
+                let t=0;
+            for(i=0;i<player.length;i++)
+            {
+                if(player[i]=="wolf"){
+                t++;
+                }
+            };
+            finish(t);
+            }
+        }
+        function finish(t){
+            var ccc=0;
+            for(c=0;c<player.length;c++){
+                if(player[c]!=null){
+                    ccc++;
+                    console.log(ccc)
+                }
+            }
+            if(t>ccc-t || t==0){
+                alert("finish game");
+                }else{
+                    day2++;
+                    step=0;
+
+                   colorrecover();
+                    close();
+                   day();
+                }
+        }
+
+        //开局加载
+        window.onload=function(){
+            for(i=0;i<day2;i++){
+                var oDiv=document.createElement("div");
+                oDiv.className="day";
+                oDiv.innerHTML="第"+(i+1)+"天";
+                    if(i==day2-1){
+                        oDiv.onclick= function(){
+                        set=this;
+                        
+                        console.log(localStorage.getItem('added-items'));
+                        start(ii); 
+                        this.onclick=null;
+                    }}
+             document.body.insertBefore(oDiv,document.body.childNodes[2])
+            }
+        }
+        //第几天
+        function day(){
+             var oDiv=document.createElement("div");
+             oDiv.className="day";
+             oDiv.innerHTML="第"+day2+"天";
+             oDiv.onclick= function(){
+                set=this;
+                
+                console.log(this.onclick)
+                 start(); 
+                 this.onclick=null;
+             }
+             document.body.insertBefore(oDiv,document.body.childNodes[2])
+        }
+        function dataoutput(){
+             json={"num":player,"day":day2,"step":step,"times":times};
+             localStorage.setItem('added-items', JSON.stringify(json));
+        }
+        function colorchange(){
+            for(i=0;i<step;i++){
+                document.getElementsByClassName("text2")[i].style.backgroundColor="grey";
+                document.getElementsByClassName("text2")[i].onclick=null;
+            }
+        }
+        function colorrecover(){
+            for(i=0;i<5;i++){
+                document.getElementsByClassName("text2")[i].style.backgroundColor="coral";
+            }
+                document.getElementsByClassName("text2")[0].onclick=function(){page()};
+                document.getElementsByClassName("text2")[1].onclick=function(){page2()};
+                document.getElementsByClassName("text2")[1].onclick=function(){page4()};
+                document.getElementsByClassName("text2")[2].onclick=function(){page3()};
+                document.getElementsByClassName("text2")[4].onclick=function(){next()};
+        }
+    </script>
+</body>
+</html>

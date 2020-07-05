@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+        body{background-color: #29bde0;};
+        .content{background-color: #ffffff;width: 607px;margin-left: auto;margin-right: auto;border: solid 1px  #cecece;}
+        .i{display: none;}
+    </style>
+</head>
+<body>
+    <div class="title"> 
+        <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+          <h3 style="font-size: 40px;padding-left: 37%;color: white;display: block;padding-top: 60px;">查看身份</h3>
+        <img src="./source/狼人杀.png" class="r" style="margin-right: 23px;margin-top:-20px;" alt="" >
+    </div>
+<div>
+    <img src="./source/翻牌.png" style="margin-left:auto;margin-right:auto;margin-top: 55px;" alt="">
+    <h3 class="l"  style="position: absolute; font-size: 40px;text-align: center;line-height: 90px;color: black;top: 175px; left: 325px;" >1</h3>
+    <h3   style="font-size: 40px;text-align: center;line-height: 90px;color: white;margin-top: 55px;display: none;" ></h3>
+</div>
+<div>
+    <div id="entry"  class="content" style="height: 90px;position: absolute;bottom: 100px;left:13%; background-color: #fab344; width: 500px;margin-left:auto;margin-right:auto;" onclick="start()">
+        <h3 style="font-size: 40px;text-align: center;line-height: 90px;color: white;" >查看<p class="num" style="display: inline;">1</p>号身份</h3>
+    </div>
+    <div id="entry2"  class="content" style="height: 90px; background-color: #fab344;margin-top: 50px; width: 500px;margin-left:auto;margin-right:auto; display: none;" onclick="next()">
+        <h3 id="next" style="font-size: 40px;text-align: center;line-height: 90px;color: white;" >隐藏并传递给<p class="num" style="display: inline;">2</p>号</h3>
+    </div>
+</div>
+
+<script>
+    let player=sessionStorage.clickcount.split(",");
+    let t=player.length;
+    let v=1;
+    function start(){
+        document.getElementsByTagName("img")[2].style.display='none';
+        document.getElementsByTagName("h3")[1].style.display='none';
+        document.getElementsByTagName("p")[0].innerHTML=v+1;
+        document.getElementsByTagName("p")[1].innerHTML=v+1;
+        document.getElementsByTagName("h3")[2].style.display='';
+        document.getElementsByTagName("h3")[2].innerHTML=player[v-1];
+        if(parseInt(document.getElementsByTagName("h3")[1].innerHTML)<t){
+        document.getElementsByTagName("h3")[1].innerHTML=parseInt(document.getElementsByTagName("h3")[1].innerHTML)+1;
+        }
+        document.getElementById("entry").style.display='none';
+        document.getElementById("entry2").style.display='';
+        if(parseInt(document.getElementsByTagName("p")[1].innerHTML)>t){
+            
+            document.getElementById("next").onclick=function nextpage(){
+                window.location.href='./法官台本.html'
+            };
+            document.getElementById("next").innerHTML="开始游戏";
+        }
+       v=v+1;
+    }
+    function next(){
+        document.getElementsByTagName("img")[2].style.display='';
+        document.getElementsByTagName("h3")[1].style.display='';
+        document.getElementsByTagName("h3")[2].style.display='none';
+        document.getElementById("entry").style.display='';
+        document.getElementById("entry2").style.display='none';
+    console.log(document.getElementsByTagName("h3")[4].onclick)
+    }
+
+    
+</script>
+</body>
+</html>

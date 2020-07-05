@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/common.css">
+    <title>Document</title>
+    <style>
+   .body{background-color: #f0f0f0;}
+   .sty{float: left; width: 100px;height: 100px;background-color: coral;border: 1px solid black;margin: 30px;text-align: center;line-height: 100px;}
+    </style>
+</head>
+<body class="body">
+    <div class="title"> 
+        <img src="./source/狼人杀.png" class="l" style="margin-left: 23px;margin-top: 80px;" alt="" >
+          <h3 style="font-size: 40px;padding-left: 37%;color: white;display: block;padding-top: 60px;">查看身份</h3>
+        <img src="./source/狼人杀.png" class="r" style="margin-right: 23px;margin-top:-20px;" alt="" >
+    </div>
+    <div id="show"></div>
+    <div style="width: 100px;height: 100px;position: absolute;top:800px;left: 40%;">
+        <input style="width: 100px;height: 100px; background-color: #29bde0;font-size: 34px;" type="button" value="确定" onclick="back();">
+    </div>
+    <script type="text/javascript">
+   var json1 = localStorage.getItem('added-items');
+   console.log(json1);
+   json=eval("(" + json1 + ")");
+   console.log(json);
+   console.log(typeof(json));
+   let player=json.num;
+   console.log(player);
+        let u;
+        let b=1;
+    for(var i=0;i<player.length;i++){
+        var oDiv=document.createElement("div");
+        oDiv.className="sty";
+        oDiv.innerHTML=b;
+        oDiv.cc=player[i];
+     
+        if(player[i]==null){
+             oDiv.style.backgroundColor="red";
+         }else{
+            oDiv.onclick=function(){
+                 if(this.style.backgroundColor!="red")
+                 {u = this;
+                    d(u);
+                }
+            };
+        }
+        b++;
+        var bo = document.getElementById("show");
+		bo.insertBefore(oDiv, bo.childNodes[0]);
+    }
+
+    function d(u){
+        u.style.backgroundColor="grey"
+        u.onclick=function(){
+        c(u);
+        }
+    }   
+    function c(u){
+        u.style.backgroundColor="coral";
+        u.onclick=function(){
+        d(u);
+        }
+    }
+
+    function back(){
+        let k=document.getElementsByClassName("sty");
+        var r=0;
+        for(i=0;i<k.length;i++){
+            if(k[i].style.backgroundColor=="grey")
+            r++;
+        }
+        if(r==1)
+        {
+        alert("身份是"+u.cc);
+        window.location.href='./法官台本.html'
+        }else {
+            alert("请正确选择")
+        }
+    }   
+    console.log(json)
+    </script>
+    </body>
+</html>
