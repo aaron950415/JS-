@@ -18,4 +18,4 @@
     }
 
     mergeSort(arr);
-    console.log(mergeSort(arr));//
+    console.log(mergeSort(arr));//.
