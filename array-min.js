@@ -10,5 +10,3 @@ let min=(numbers)=>{
   } 
       
 };
-console.log(min(arr));
-console.log(arr);

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj1 = {
+            a:1,
+            name:'XXX',
+            address:{
+                city:'NSW'
+            },
+            arr:[1,4,6,8,9,0]
+        }
+
+        //浅拷贝
+        const obj2=obj1;
+        obj2.a=2;
+        console.log(obj1.a);//结果obj1.a = 2;浅拷贝，obj1随着obj2数值变化而变化
+        obj1.a=1;//obj1数值复原
+        
+        //以下为深拷贝
+        const obj3 = deepClone(obj1);
+        obj3.a = 55;
+        console.log(obj1.a);//结果obj1.a = 1;深拷贝，obj1随着obj2数值变化而变化
+        function deepClone(obj={}){
+            if (typeof obj !== 'object' || obj ==null) {
+                //obj是null，或者不是对象和数组，直接返回原值
+                return obj
+            }
+            //初始化返回结果
+            let result;
+            if (obj instanceof Array){
+                result = [];
+            } else {
+                result = {};
+            }
+
+            for (let key in obj) {
+                    //保证key不是原型obj的数值
+                if (obj.hasOwnProperty(key)) {
+                    //递归调用，防止对象当中还有对象例如obj1.address
+                    result [key] = deepClone(obj [key]);
+                }
+            }
+
+            //返回结果
+            return result
+        }
+
+
+    </script>
+</body>
+</html>
