@@ -16,4 +16,4 @@ let quickSort=(arr)=>{
 }
 quickSort(arr);
 console.log(arr);
-console.log(quickSort(arr));
+console.log(quickSort(arr)
