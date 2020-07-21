@@ -25,7 +25,7 @@
         //以下为深拷贝
         const obj3 = deepClone(obj1);
         obj3.a = 55;
-        console.log(obj1.a);//结果obj1.a = 1;深拷贝，obj1随着obj2数值变化而变化
+        console.log(obj1.a);//结果obj1.a = 1;深拷贝，obj1随着obj2数值变化而变
         function deepClone(obj={}){
             if (typeof obj !== 'object' || obj ==null) {
                 //obj是null，或者不是对象和数组，直接返回原值
